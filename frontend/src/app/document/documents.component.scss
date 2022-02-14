@@ -1,0 +1,15 @@
+.container {
+    margin: 50px 100px 100px 100px;
+}
+
+.button-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.button-right {
+    float: right;
+    width: fit-content;
+    display: inline-block;
+}

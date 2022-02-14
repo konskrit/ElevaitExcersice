@@ -1,0 +1,33 @@
+.container {
+    width: 50%;
+    margin: auto;
+}
+
+ul {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    list-style: none;
+}
+
+ul li {
+    margin-left: 5px;
+    display: inline;
+}
+
+.plus {
+    margin-left: 5px;
+}
+
+.document {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.mini-buttons {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 5px;
+}

@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="document" *ngIf="document">
+        <div style="text-align: center;" >
+            <h3>{{document.title}}</h3>
+            <div>
+                <h4>{{document.author}}</h4>
+                <p>{{document.dateCreated}}</p>
+            </div>
+        </div>
+        <div>
+            <ul>
+                <li *ngFor="let page of document.pages">
+                    <button mat-fab (click)="navigateToPage(page.id)">{{page.pageNr}}</button>
+                    <div class="mini-buttons">
+                        <div style="margin-bottom: 5px;margin-left: 8px;">
+                            <button mat-mini-fab (click)="createUpdatePage(page.id)">Edit</button>
+                        </div>
+                        <div style="margin-bottom: 5px;margin-left: 8px;">
+                            <button (click)="deletePage(page.id)" mat-mini-fab>Delete</button>
+                        </div>
+                    </div>
+                </li>
+                <button mat-fab (click)="createUpdatePage()">+</button>
+            </ul>
+        </div>
+    </div>
+</div>

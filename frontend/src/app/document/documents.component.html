@@ -1,0 +1,59 @@
+<div class="container">
+    <h1 style="text-align: center;">All Documents</h1>
+
+    <mat-form-field>
+        <mat-label>Filter by Author</mat-label>
+        <input matInput type="text" [(ngModel)]="filterValue"
+        (input)="findByAuthor(filterValue)" placeholder="Search Author">
+    </mat-form-field>
+    
+    <div *ngIf="dataSource">
+        <mat-table [dataSource]="dataSource.data">
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    
+            <ng-container matColumnDef="Author">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{row.author}}</mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="Title">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+                <mat-cell *matCellDef="let row"><button mat-button (click)="navigateToDocument(row.id)">{{row.title}}</button></mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="DateCreated">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Date Created</mat-header-cell>
+                <mat-cell *matCellDef="let row">{{row.dateCreated}}</mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="Edit">
+                <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+                <mat-cell *matCellDef="let row"><button mat-button (click)="openCUDocument(row.id)">Edit</button></mat-cell>
+            </ng-container>
+    
+            <ng-container matColumnDef="Delete">
+                <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+                <mat-cell *matCellDef="let row"><button mat-button (click)="deleteDocument(row.id)">Delete</button></mat-cell>
+            </ng-container>
+    
+            
+        </mat-table>
+
+        <div class="button-container">
+            <div>
+                <button class="button-right" mat-button (click)="openCUDocument()">Add new document</button>
+            </div>
+    
+            <mat-paginator 
+                [length]="dataSource.total" 
+                [pageSize]="dataSource.limit" 
+                [pageSizeOptions]="[5,10,25,100]"
+                (page)="pageEvent = $event; onPaginateChange($event)"
+                showFirstLastButtons>
+            </mat-paginator>
+        </div>
+       
+
+    </div>
+</div>

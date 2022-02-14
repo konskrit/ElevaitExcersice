@@ -1,0 +1,50 @@
+<form [formGroup]="form">
+  <div>
+    <mat-card class="container">
+      <div class="container" style="width: 80%">
+        <mat-form-field>
+          <input matInput placeholder="Title" formControlName="title" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Author" formControlName="author" />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Date Created"
+            formControlName="dateCreated"
+          />
+        </mat-form-field>
+      </div>
+
+      <button mat-flat-button color="primary" (click)="onClickClose()">
+        Cancel
+      </button>
+      <button
+
+      style="margin-top: 10px;"
+        *ngIf="!isUpdate"
+        mat-flat-button
+        color="primary"
+        [disabled]="!form.valid"
+        type="submit"
+        (click)="onClickCreate()"
+      >
+        Add Entry
+      </button>
+      <button
+      style="margin-top: 10px;"
+        *ngIf="isUpdate"
+        mat-flat-button
+        color="primary"
+        [disabled]="!form.valid"
+        type="submit"
+        (click)="onClickUpdate()"
+      >
+        Update Entry
+      </button>
+    </mat-card>
+  </div>
+</form>
